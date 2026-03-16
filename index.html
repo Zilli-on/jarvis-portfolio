@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fabien | AI Automation Expert</title>
+  <meta name="description" content="AI Workflow Automation, Telegram Bots, Content Pipelines — fast, affordable, real results.">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a12;
+      --surface: #12121e;
+      --border: rgba(255,255,255,0.08);
+      --text: #e8e8f0;
+      --dim: #8888a0;
+      --blue: #0A84FF;
+      --green: #30D158;
+      --orange: #FF9F0A;
+      --red: #FF453A;
+      --radius: 16px;
+      --font: -apple-system, 'Inter', 'SF Pro Display', sans-serif;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(10,10,18,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 clamp(16px, 5vw, 80px);
+      display: flex; align-items: center; justify-content: space-between;
+      height: 56px;
+    }
+    .nav-brand { font-weight: 700; font-size: 1.1rem; color: var(--blue); letter-spacing: -0.5px; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { color: var(--dim); text-decoration: none; font-size: 0.9rem; transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+
+    /* HERO */
+    .hero {
+      max-width: 900px; margin: 0 auto;
+      padding: clamp(60px, 10vw, 120px) clamp(16px, 5vw, 40px) 80px;
+      text-align: center;
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(10,132,255,0.12); border: 1px solid rgba(10,132,255,0.3);
+      border-radius: 100px; padding: 6px 16px; margin-bottom: 28px;
+      font-size: 0.82rem; color: var(--blue); font-weight: 500;
+    }
+    .badge::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--blue); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-weight: 800; letter-spacing: -2px; line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    h1 span { color: var(--blue); }
+    .hero-sub {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: var(--dim); max-width: 580px; margin: 0 auto 36px;
+    }
+    .cta-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 24px; border-radius: 10px;
+      font-size: 0.95rem; font-weight: 600; text-decoration: none;
+      transition: all .2s; cursor: pointer; border: none;
+    }
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn-primary:hover { background: #0070d8; transform: translateY(-1px); }
+    .btn-secondary {
+      background: transparent; color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover { background: var(--surface); }
+
+    /* STATS */
+    .stats {
+      display: flex; gap: 2px; justify-content: center;
+      max-width: 700px; margin: 60px auto 0; flex-wrap: wrap;
+    }
+    .stat {
+      flex: 1; min-width: 140px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 20px; text-align: center;
+    }
+    .stat-num { font-size: 1.8rem; font-weight: 800; color: var(--blue); }
+    .stat-label { font-size: 0.78rem; color: var(--dim); margin-top: 4px; }
+    .stats .stat:nth-child(2) .stat-num { color: var(--green); }
+    .stats .stat:nth-child(3) .stat-num { color: var(--orange); }
+
+    /* SECTION */
+    section { max-width: 1000px; margin: 0 auto; padding: 0 clamp(16px, 5vw, 40px) 80px; }
+    .section-label {
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--blue); margin-bottom: 12px;
+    }
+    h2 { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700; letter-spacing: -1px; margin-bottom: 8px; }
+    .section-sub { color: var(--dim); margin-bottom: 48px; }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: transform .2s, border-color .2s;
+      position: relative; overflow: hidden;
+    }
+    .service-card:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.15); }
+    .service-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    }
+    .service-icon { font-size: 2rem; margin-bottom: 16px; }
+    .service-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
+    .service-card p { font-size: 0.88rem; color: var(--dim); line-height: 1.6; margin-bottom: 16px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+    .tag {
+      font-size: 0.72rem; font-weight: 500;
+      background: rgba(255,255,255,0.06); border: 1px solid var(--border);
+      border-radius: 100px; padding: 3px 10px; color: var(--dim);
+    }
+    .service-price { font-size: 1.2rem; font-weight: 800; }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    @media (max-width: 680px) { .about-grid { grid-template-columns: 1fr; } }
+    .about-text h2 { margin-bottom: 16px; }
+    .about-text p { color: var(--dim); margin-bottom: 16px; font-size: 0.95rem; }
+    .about-points { list-style: none; }
+    .about-points li {
+      padding: 10px 0; border-bottom: 1px solid var(--border);
+      font-size: 0.88rem; display: flex; align-items: center; gap: 10px;
+    }
+    .about-points li::before { content: '✓'; color: var(--green); font-weight: 700; }
+    .jarvis-box {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px;
+      font-family: 'Menlo', 'Consolas', monospace; font-size: 0.8rem;
+      color: var(--green); line-height: 1.8;
+    }
+    .jarvis-box .dim { color: var(--dim); }
+    .jarvis-box .orange { color: var(--orange); }
+    .jarvis-box .blue { color: var(--blue); }
+
+    /* CONTACT */
+    .contact-grid { display: flex; gap: 16px; flex-wrap: wrap; }
+    .contact-card {
+      flex: 1; min-width: 200px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px; text-decoration: none;
+      color: var(--text); transition: all .2s;
+    }
+    .contact-card:hover { border-color: var(--blue); transform: translateY(-2px); }
+    .contact-card .icon { font-size: 1.6rem; margin-bottom: 12px; }
+    .contact-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+    .contact-card p { font-size: 0.82rem; color: var(--dim); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px clamp(16px, 5vw, 80px);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+    }
+    footer p { font-size: 0.8rem; color: var(--dim); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 0.8rem; color: var(--dim); text-decoration: none; }
+    .footer-links a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">Fabien.AI</div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<main>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="badge">Available for new projects</div>
+    <h1>AI Automation<br>that <span>actually works</span></h1>
+    <p class="hero-sub">
+      I build custom AI workflows, Telegram bots and content pipelines
+      that save you hours every week — fast delivery, clear communication.
+    </p>
+    <div class="cta-group">
+      <a href="https://fiverr.com" class="btn btn-primary">View Fiverr Gigs</a>
+      <a href="#contact" class="btn btn-secondary">Get in touch</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-num">2-14d</div>
+        <div class="stat-label">Delivery time</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Custom built</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">$50+</div>
+        <div class="stat-label">Starting price</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-label">What I offer</div>
+    <h2>Services</h2>
+    <p class="section-sub">Everything is built to your needs. No templates, no fluff.</p>
+    <div class="services-grid">
+      <div class="service-card" style="--accent:#1E90FF">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:#1E90FF"></div>
+        <div class="service-icon">⚙️</div>
+        <h3>AI Workflow Automation</h3>
+        <p>I automate repetitive tasks using Python, Node.js and Claude AI — emails, reports, notifications, custom scripts.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Node.js</span><span class="tag">Claude AI</span><span class="tag">Automation</span></div>
+        <div class="service-price" style="color:#1E90FF">from $50</div>
+      </div>
+      <div class="service-card" style="--accent:#00BFFF">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:#00BFFF"></div>
+        <div class="service-icon">🤖</div>
+        <h3>Custom Telegram Bot</h3>
+        <p>AI-powered Telegram bots for customer support, notifications, status reports or personal assistants.</p>
+        <div class="tags"><span class="tag">Node.js</span><span class="tag">Telegram API</span><span class="tag">Groq AI</span><span class="tag">Webhooks</span></div>
+        <div class="service-price" style="color:#00BFFF">from $60</div>
+      </div>
+      <div class="service-card" style="--accent:#32CD32">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:#32CD32"></div>
+        <div class="service-icon">📱</div>
+        <h3>AI Content Pipeline</h3>
+        <p>Automate your content creation: daily ideas via Telegram, post drafts, content calendar — all AI-generated.</p>
+        <div class="tags"><span class="tag">Groq API</span><span class="tag">LLM</span><span class="tag">Social Media</span><span class="tag">Cron Jobs</span></div>
+        <div class="service-price" style="color:#32CD32">from $80</div>
+      </div>
+      <div class="service-card" style="--accent:#FF8C00">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:#FF8C00"></div>
+        <div class="service-icon">🎯</div>
+        <h3>Personal Brand AI Clone</h3>
+        <p>I build an AI that writes, responds and creates content in your unique voice and style.</p>
+        <div class="tags"><span class="tag">LLM Prompting</span><span class="tag">Voice Matching</span><span class="tag">Brand Analysis</span></div>
+        <div class="service-price" style="color:#FF8C00">from $150</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label">Who I am</div>
+        <h2>Built JARVIS.<br>Now building for you.</h2>
+        <p>
+          I'm Fabien — an AI automation developer based in Europe.
+          I built JARVIS, my personal AI system that runs 24/7 on my PC,
+          managing tasks, generating content, monitoring hardware and sending
+          Telegram notifications automatically.
+        </p>
+        <p>
+          Now I offer the same automation power to freelancers, small businesses
+          and personal brands who want to work smarter.
+        </p>
+        <ul class="about-points">
+          <li>No unnecessary complexity — just working solutions</li>
+          <li>Clear communication, honest timelines</li>
+          <li>Python, Node.js, AI APIs — full stack</li>
+          <li>Europe-based, English & German</li>
+        </ul>
+      </div>
+      <div class="jarvis-box">
+        <span class="dim">// JARVIS System — running 24/7</span><br><br>
+        <span class="blue">services</span> = [<br>
+        &nbsp;&nbsp;<span class="orange">"Hardware Telemetry"</span>,<br>
+        &nbsp;&nbsp;<span class="orange">"TTS Voice Output"</span>,<br>
+        &nbsp;&nbsp;<span class="orange">"Screen Memory"</span>,<br>
+        &nbsp;&nbsp;<span class="orange">"Telegram Remote"</span>,<br>
+        &nbsp;&nbsp;<span class="orange">"AI Content Pipeline"</span><br>
+        ]<br><br>
+        <span class="blue">status</span>: <span style="color:#30D158">ALL SYSTEMS ONLINE</span><br>
+        <span class="blue">uptime</span>: <span class="dim">continuous</span><br>
+        <span class="blue">tasks_done_today</span>: <span class="orange">automated</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-label">Let's work together</div>
+    <h2>Get in touch</h2>
+    <p class="section-sub">I respond within 24 hours. No fluff, straight to the point.</p>
+    <div class="contact-grid">
+      <a href="https://fiverr.com" class="contact-card">
+        <div class="icon">💼</div>
+        <h3>Fiverr</h3>
+        <p>Order directly via Fiverr for secure payments and buyer protection.</p>
+      </a>
+      <a href="https://t.me/FabienopenClawbot" class="contact-card">
+        <div class="icon">✈️</div>
+        <h3>Telegram</h3>
+        <p>Quick questions? Message me directly on Telegram for a fast reply.</p>
+      </a>
+      <a href="mailto:fdambock@gmail.com" class="contact-card">
+        <div class="icon">📧</div>
+        <h3>Email</h3>
+        <p>For detailed project inquiries: fdambock@gmail.com</p>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 Fabien — AI Automation Expert | Built with Python + JARVIS</p>
+  <div class="footer-links">
+    <a href="https://fiverr.com">Fiverr</a>
+    <a href="https://instagram.com/braunwieimmer">Braunwieimmer</a>
+  </div>
+</footer>
+
+</body>
+</html>
