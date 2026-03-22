@@ -160,6 +160,30 @@
     .jarvis-box .orange { color: var(--orange); }
     .jarvis-box .blue { color: var(--blue); }
 
+    /* JARVIS FEATURES */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+    }
+    .feature-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 22px;
+      transition: transform .2s, border-color .2s;
+      position: relative;
+    }
+    .feature-card:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.14); }
+    .feature-card .f-icon { font-size: 1.5rem; margin-bottom: 12px; }
+    .feature-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; }
+    .feature-card p { font-size: 0.82rem; color: var(--dim); line-height: 1.5; }
+    .feature-badge {
+      display: inline-block; font-size: 0.68rem; font-weight: 600;
+      padding: 2px 8px; border-radius: 100px; margin-top: 10px;
+    }
+    .badge-green { background: rgba(48,209,88,0.15); color: var(--green); }
+    .badge-blue { background: rgba(10,132,255,0.15); color: var(--blue); }
+    .badge-orange { background: rgba(255,159,10,0.15); color: var(--orange); }
+
     /* CONTACT */
     .contact-grid { display: flex; gap: 16px; flex-wrap: wrap; }
     .contact-card {
@@ -193,6 +217,7 @@
   <div class="nav-links">
     <a href="#services">Services</a>
     <a href="#about">About</a>
+    <a href="#jarvis">JARVIS</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
@@ -303,6 +328,51 @@
         <span class="blue">status</span>: <span style="color:#30D158">ALL SYSTEMS ONLINE</span><br>
         <span class="blue">uptime</span>: <span class="dim">continuous</span><br>
         <span class="blue">tasks_done_today</span>: <span class="orange">automated</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- JARVIS FEATURES -->
+  <section id="jarvis">
+    <div class="section-label">Under the hood</div>
+    <h2>JARVIS — v8 Features</h2>
+    <p class="section-sub">The autonomous AI system powering my daily workflow. 30+ scheduled jobs, zero manual intervention.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="f-icon">🗺️</div>
+        <h3>Facility Map</h3>
+        <p>2D real-time map of all 14 JARVIS rooms. Live agent status, RAM bar, scheduler countdown, event ticker.</p>
+        <span class="feature-badge badge-green">LIVE</span>
+      </div>
+      <div class="feature-card">
+        <div class="f-icon">📋</div>
+        <h3>Activity Log</h3>
+        <p>Central JSONL event log. All 14 agents write every action — searchable via BM25 with 12,000+ captures.</p>
+        <span class="feature-badge badge-blue">ALWAYS ON</span>
+      </div>
+      <div class="feature-card">
+        <div class="f-icon">📊</div>
+        <h3>KPI Tracker</h3>
+        <p>Daily revenue + autonomy KPIs via Telegram: Fiverr orders, Instagram reach, agent runs, tasks completed.</p>
+        <span class="feature-badge badge-orange">DAILY 11:00</span>
+      </div>
+      <div class="feature-card">
+        <div class="f-icon">🤖</div>
+        <h3>Claude Runner</h3>
+        <p>Autonomous Claude API sessions — JARVIS picks tasks from queue, runs Claude with real file tools, marks done.</p>
+        <span class="feature-badge badge-blue">DAILY 11:30</span>
+      </div>
+      <div class="feature-card">
+        <div class="f-icon">🛠️</div>
+        <h3>Self-Healer</h3>
+        <p>Checks services, log sizes, DB integrity twice daily. Auto-fixes broken ports and cleans logs without prompting.</p>
+        <span class="feature-badge badge-green">2× DAILY</span>
+      </div>
+      <div class="feature-card">
+        <div class="f-icon">⏱️</div>
+        <h3>Scheduler</h3>
+        <p>30 scheduled Python jobs — no cron, no schtasks. Duplicate-instance protection, per-job state tracking.</p>
+        <span class="feature-badge badge-orange">30 JOBS</span>
       </div>
     </div>
   </section>
